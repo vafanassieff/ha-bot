@@ -24,7 +24,7 @@ client.on('message', message => {
     if(message.author.bot) //Avoid repeat
         return;
 
-    if (haTrigge[message.content.toLocaleLowerCase()])
+    if (haTrigger[message.content.toLocaleLowerCase()])
     {
         console.log("ah sent !")
         if (message.member.voiceChannel) {
