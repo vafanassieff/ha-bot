@@ -26,6 +26,7 @@ client.on('message', message => {
 
     if (haTrigge[message.content.toLocaleLowerCase()])
     {
+        console.log("ah sent !")
         if (message.member.voiceChannel) {
             message.member.voiceChannel.join().then(connection => { // Connection is an instance of VoiceConnection
             
