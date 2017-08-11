@@ -7,7 +7,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 client.on('ready', () => {
-    client.user.setGame(`on ${client.guilds.size} servers`);
+    client.user.setGame(`Koh Lanta`);
     console.log(`Ready to serve on ${client.guilds.size} servers, for ${client.users.size} users.`);
 });
 
@@ -16,7 +16,7 @@ let responseObject = { //Message who will trigger the bot
     "ha": "C'est pas bien de dire ah",
     "a": "Mauvaise idee ici",
     "hah": "Bien essayer Loic",
-    "<:ha:311864943047737344>": "Grosse emote"
+    "<:ha:311864943047737344>": "'<:ha:311864943047737344>'"
 };
 
 client.on('message', message => {
@@ -26,9 +26,7 @@ client.on('message', message => {
 
     if (responseObject[message.content.toLocaleLowerCase()])
     {
-        var ret = "<:ha:311864943047737344> ";
-        ret += message.author;
-        message.author.send(ret);
+        message.author.send(responseObject[message.content]);
 
         if (message.member.voiceChannel) {
             message.member.voiceChannel.join().then(connection => { // Connection is an instance of VoiceConnection

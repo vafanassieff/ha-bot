@@ -12,4 +12,8 @@ If you want to add the bot to your server just use this link
 
 I run the bot on my AWS EC2 server, if the traffic is too high i will shut it down and add here a way to run it localy if you want to.
 
+### Usage
+
+Type ah, ha, a, hah in lower or uppercase in chat
+
 ![HA](https://risibank.fr/cache/stickers/d123/12382-full.png)
