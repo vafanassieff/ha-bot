@@ -11,7 +11,7 @@ client.on('ready', () => {
     console.log(`Ready to serve on ${client.guilds.size} servers, for ${client.users.size} users.`);
 });
 
-let responseObject = { //Message who will trigger the bot
+let haTrigger = { //Message who will trigger the bot
     "ah": "Denis te surveille",
     "ha": "C'est pas bien de dire ah",
     "a": "Mauvaise idee ici",
@@ -24,10 +24,8 @@ client.on('message', message => {
     if(message.author.bot) //Avoid repeat
         return;
 
-    if (responseObject[message.content.toLocaleLowerCase()])
+    if (haTrigge[message.content.toLocaleLowerCase()])
     {
-        message.author.send(responseObject[message.content]);
-
         if (message.member.voiceChannel) {
             message.member.voiceChannel.join().then(connection => { // Connection is an instance of VoiceConnection
             
