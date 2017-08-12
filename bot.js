@@ -19,33 +19,36 @@ let haTrigger = {               //Message who will trigger the bot
     "<:ha:311864943047737344>": "'<:ha:311864943047737344>'"
 };
 
+function error_no_perm (err){
+    isReady = true
+    console.log(err + "");
+}
+
 function denis_brogniart(message)
 {
     if (message.member.voiceChannel) 
         {
-            var time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-            console.log("[" + time + "]" + " ah sent ! by " + message.author.username + " on Guild " + message.guild);
-
             isReady = false;
             message.member.voiceChannel.join().then(connection => { // Connection is an instance of VoiceConnection
-            const dispatcher = connection.playFile('./AH.mp3');
+                var time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+                console.log("[" + time + "]" + " ah sent ! by " + message.author.username + " on Guild " + message.guild);
+                const dispatcher = connection.playFile('./AH.mp3');
 
-            dispatcher.on('error', e => {
-                console.log(e);
-            });
-            dispatcher.on('end', () => { //Disconnect the bot after playing the sound
-               connection.disconnect();
-               isReady = true;
-            });
+                dispatcher.on('error', e => {
+                    console.log(e);
+                });
+                dispatcher.on('end', () => { //Disconnect the bot after playing the sound
+                    connection.disconnect();
+                    isReady = true;
+                });
 
-            }).catch(console.log);
+            }).catch(error_no_perm);
         } 
-         else 
-            return ;
+     else 
+        return ;
 }
 
 client.on('message', message => {
-
     if(message.author.bot) //Avoid self repeat
         return;
 
