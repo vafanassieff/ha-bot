@@ -10,7 +10,12 @@ If you want to add the bot to your server just use this link
 
     `https://discordapp.com/oauth2/authorize?&client_id=345270648035344384&scope=bot`
 
-I run the bot on my AWS EC2 server, if the traffic is too high i will shut it down and add here a way to run it localy if you want to.
+I run the bot on my AWS EC2 server, if the traffic is too high i will shut it down and add here a way to run it localy if you want to, add your creditential in config.json
+
+`{
+  "botToken": "BOT_KEY",
+  "adminId": "YOUR_ID"
+}`
 
 ### Usage
 
