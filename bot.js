@@ -20,7 +20,7 @@ let haTrigger = {               //Message who will trigger the bot
 };
 
 function error_no_perm (err){
-    isReady = true
+    isReady = true;
     console.log(err + "");
 }
 
@@ -56,7 +56,31 @@ function je_suis_pas_venu_ici(message)
             message.member.voiceChannel.join().then(connection => { // Connection is an instance of VoiceConnection
                 var time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
                 console.log("[" + time + "]" + " Je suis pas venu ici pour souffir sent by " + message.author.username + " on Guild " + message.guild);
-                const dispatcher = connection.playFile('./mp3/souffir.mp3');
+                const dispatcher = connection.playFile('./mp3/souffrir.mp3');
+
+                dispatcher.on('error', e => {
+                    console.log(e);
+                });
+                dispatcher.on('end', () => { //Disconnect the bot after playing the sound
+                    connection.disconnect();
+                    isReady = true;
+                });
+
+            }).catch(error_no_perm);
+        } 
+     else 
+        return ;
+}
+
+function warudo(message)
+{
+    if (message.member.voiceChannel) 
+        {
+            isReady = false;
+            message.member.voiceChannel.join().then(connection => { // Connection is an instance of VoiceConnection
+                var time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+                console.log("[" + time + "]" + " Je suis pas venu ici pour souffir sent by " + message.author.username + " on Guild " + message.guild);
+                const dispatcher = connection.playFile('./mp3/Za_Warudo.mp3');
 
                 dispatcher.on('error', e => {
                     console.log(e);
@@ -78,8 +102,12 @@ client.on('message', message => {
 
     if (haTrigger[message.content.toLowerCase()] && isReady)
         denis_brogniart(message);
-    else if (message.content === "./souffir" && isReady)
+    else if (message.content === "./ah" && isReady)
+        denis_brogniart(message);
+    else if (message.content === "./souffrir" && isReady)
         je_suis_pas_venu_ici(message);
+     else if (message.content === "./warudo" && isReady)
+        warudo(message);
 });
 
 client.login(config.botToken); // Log our bot in
