@@ -1,6 +1,7 @@
 # ha-bot
 
-Simple discord bot who play the "Ha" phrase from the famous tv animator Denis Brogniart
+Simple discord bot who play the "Ha" phrase from the famous tv animator Denis Brogniart.
+And various mp3 from the song.json file
 
 Built with [nodejs](https://nodejs.org/en/) and the [discordjs](https://discord.js.org/#/) library.
 
