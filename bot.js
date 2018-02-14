@@ -9,7 +9,7 @@ let songsDict = getSongList();
 client.login(config.botToken); // Log our bot in
 
 client.on('ready', () => {
-  client.user.setGame(`Koh Lanta`);
+  client.user.setActivity(`Koh Lanta`);
   console.log(`Ready to serve on ${client.guilds.size} servers, for ${client.users.size} users.`);
 });
 
@@ -57,13 +57,16 @@ function play_song(message, songs)
       message.member.voiceChannel.join().then(connection => { // Connection is an instance of VoiceConnection
         let time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
         console.log("[" + time + "]" + " " + file +  " sent by " + message.author.username + " on Guild " + message.guild);
-        let dispatcher = connection.playFile(file);
+        const dispatcher = connection.playFile(file, {
+          passes: 5
+        });
         dispatcher.on('error', e => {
             console.log(e);
         });
         dispatcher.on('end', () => { //Disconnect the bot after playing the sound
             connection.disconnect();
             isReady = true;
+            dispatcher.destroy();
         });
       }).catch(error_no_perm);
     } 
