@@ -36,6 +36,7 @@ function getSongList() {
   }
   songs['ha'] = './mp3/AH.mp3';
   songs['ah'] = './mp3/AH.mp3';
+  return (songs)
 }
 
 function error_no_perm (err){
