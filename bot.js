@@ -31,14 +31,14 @@ function getSongList() {
     if (files[i].slice(-4) === ".mp3") {
       let command = "./" + files[i].slice(0, -4);
       let mp3 = "./mp3/" + files[i];
-      songs[command] = mp3
+      songs[command] = mp3;
     }
   }
   // Some special case
   songs['ha'] = './mp3/AH.mp3';
   songs['ah'] = './mp3/AH.mp3';
-  songs['"<:ha:311864943047737344>'] = './mp3/AH.mp3';
-  return (songs)
+  songs['<:ha:311864943047737344>'] = './mp3/AH.mp3';
+  return songs;
 }
 
 function error_no_perm (err){
