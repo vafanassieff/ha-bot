@@ -10,5 +10,6 @@
     "./flemme": "./mp3/flemme.mp3",
     "./Aids": "./mp3/AIDS!.wav",
     "./akadoc": "./mp3/a_kadoc.mp3",
-    "./comportement": "./mp3/comportement.mp3"
+    "./comportement": "./mp3/comportement.mp3",
+	"./enculer": "./mp3/enculer.mp3"
 }
