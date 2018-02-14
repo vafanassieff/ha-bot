@@ -25,7 +25,7 @@ client.on('message', message => {
 
 function getSongList() {
   let folder = "./mp3/";
-  let files = fs.readdirSync(folder);
+  let files = fs.readdirSync(folder); // Sync but only called once
   let songs = {};
   for (let i = 0; i < files.length; i++) {
     if (files[i].slice(-4) === ".mp3") {
@@ -34,8 +34,10 @@ function getSongList() {
       songs[command] = mp3
     }
   }
+  // Some special case
   songs['ha'] = './mp3/AH.mp3';
   songs['ah'] = './mp3/AH.mp3';
+  songs['"<:ha:311864943047737344>'] = './mp3/AH.mp3';
   return (songs)
 }
 
