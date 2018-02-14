@@ -35,8 +35,8 @@ function getSongList() {
     }
   }
   // Some special case
-  songs['ha'] = './mp3/AH.mp3';
-  songs['ah'] = './mp3/AH.mp3';
+  songs['ha'] = './mp3/ah.mp3';
+  songs['ah'] = './mp3/ah.mp3';
   songs['<:ha:311864943047737344>'] = './mp3/AH.mp3';
   return songs;
 }
