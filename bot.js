@@ -20,13 +20,14 @@ client.on('message', message => {
   if(songsDict.hasOwnProperty(message.content.toLowerCase()) && isReady)
       play_song(message, songsDict);
   else
-      return
+      return;
 });
 
 function getSongList() {
   let folder = "./mp3/";
   let files = fs.readdirSync(folder); // Sync but only called once
   let songs = {};
+  // Command is ./
   for (let i = 0; i < files.length; i++) {
     if (files[i].slice(-4) === ".mp3") {
       let command = "./" + files[i].slice(0, -4);
@@ -43,7 +44,7 @@ function getSongList() {
 
 function error_no_perm (err){
   isReady = true;
-  console.log(err + "");
+  console.error(new Date().toISOString() + '\n' + err.message + '\n' + err.stack);
 }
 
 function play_song(message, songs)
@@ -71,5 +72,5 @@ function play_song(message, songs)
       }).catch(error_no_perm);
     } 
     else 
-      return ;
+      return;
 }
