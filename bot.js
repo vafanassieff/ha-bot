@@ -23,6 +23,10 @@ client.on('message', message => {
       return;
 });
 
+client.on('error', error => {
+  console.error(error);
+});
+
 function getSongList() {
   let folder = "./mp3/";
   let files = fs.readdirSync(folder); // Sync but only called once
@@ -62,14 +66,17 @@ function play_song(message, songs)
           passes: 5
         });
         dispatcher.on('error', e => {
-            console.log(e);
+            console.error(e);
         });
         dispatcher.on('end', () => { //Disconnect the bot after playing the sound
             connection.disconnect();
             isReady = true;
             dispatcher.destroy();
         });
-      }).catch(error_no_perm);
+      }).catch(err => {
+        error_no_perm();
+        console.error(err);
+      });
     } 
     else 
       return;
